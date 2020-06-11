@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello Webpack</title>
+    <title>Hello TicTacToe</title>
   </head>
   <body>
     <div>
-      <h1>Hello Webpack</h1>
+      <h1>Hello TicTacToe</h1>
     </div>
     <button type="button" id="btnClickMe" value="clickme">Click Me!</button>
     <div id="app"></div>
     <div id="tsExample"></div>
+    <div id="tictactoe-root"></div>
+    <script>
+      window.addEventListener('mousedown', function(e) {
+        document.body.classList.add('mouse-navigation');
+        document.body.classList.remove('kbd-navigation');
+      });
+      window.addEventListener('keydown', function(e) {
+        if (e.keyCode === 9) {
+          document.body.classList.add('kbd-navigation');
+          document.body.classList.remove('mouse-navigation');
+        }
+      });
+      window.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+          e.preventDefault();
+        }
+      });
+    </script>
     <script type="text/javascript" src="./bundle.js"></script>
   </body>
 </html>
