@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "bfe": "webpack --config ./webpack.config.js --mode production",
+    "start": "webpack-dev-server --host 0.0.0.0 --port 8081 --config ./webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,12 +16,18 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "@blueprintjs/core": "^3.28.2",
-    "@types/react": "^16.9.35",
+    "@types/es6-shim": "^0.31.40",
+    "@types/moment": "^2.13.0",
+    "@types/pure-render-decorator": "^0.2.28",
+    "@types/react": "^16.9.36",
+    "@types/react-addons-css-transition-group": "^15.0.5",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
     "css-modules-typescript-loader": "^4.0.0",
     "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
     "sass-loader": "^8.0.2",
     "source-map-loader": "^1.0.0",
@@ -31,8 +38,5 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  }
+  "dependencies": {}
 }

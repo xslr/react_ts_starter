@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
@@ -12,7 +11,12 @@ module.exports = {
     rules: [
       {
         test: /\.(s?)css/,
-        include: path.resolve(__dirname, 'src'),
+        // do not explicitly exclude or include paths to allow the loaders to find blueprintjs' css
+        // include: [
+        //   path.resolve(__dirname, 'src'),
+        //   path.resolve(__dirname, 'node_modules/@blueprintjs'),
+        // ],
+        // exclude: path.resolve(__dirname, 'node_modules'),
         use: [
           { loader: "style-loader" },  // to inject the result into the DOM as a style block
           { loader: "css-modules-typescript-loader"},  // to generate a .d.ts module next to the .scss file (also requires a declaration.d.ts with "declare modules '*.scss';" in it to tell TypeScript that "import styles from './styles.scss';" means to load the module "./styles.scss.d.td")
@@ -23,16 +27,17 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.js(x?)$/,
+        exclude: path.resolve(__dirname, 'node_modules'),
         use: ['source-map-loader']
       },
       {
         test: /\.js(x?)$/,
-        exclude: /node_modules/,
+        exclude: path.resolve(__dirname, 'node_modules'),
         use: ['babel-loader']
       },
       {
         test: /\.ts(x?)$/,
-        exclude: /node_modules/,
+        exclude: path.resolve(__dirname, 'node_modules'),
         use: [
           {
             loader: 'ts-loader'
