@@ -7,6 +7,7 @@ export default class extends React.Component {
     return (
       <div className={style.container}>
         <h3>Dashboard</h3>
+        <p>You are authenticated</p>
       </div>
       )
   }

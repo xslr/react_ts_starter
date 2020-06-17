@@ -1,14 +1,15 @@
 import * as React from 'react';
-// import {navigate, useRoutes} from 'hookrouter';
+import { withRouter } from "react-router-dom";
 import {AnchorButton, Button, FormGroup, Icon, InputGroup, Intent, Spinner} from '@blueprintjs/core';
 const {default: axios} = require('axios');
 import Cookies from 'js-cookie';
 
 import style from './Login.scss';
 
-export default class extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
       username: '',
       password: '',
@@ -30,7 +31,7 @@ export default class extends React.Component {
           expires: 30,        // TODO: get expiry info from backend
           sameSite: 'strict', // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
         });
-        // navigate('/dashboard', /*replace=*/true);
+        this.props.history.push('/dashboard')
     } else {
       console.error(`login errror: ${response}`)
     }
@@ -56,7 +57,8 @@ export default class extends React.Component {
     const { username, password } = this.state;
     return (
       <form>
-      <h3>Login</h3>
+        <h3>Login</h3>
+        <p>You are not authenticated.</p>
         <div className={style.loginContainer}>
           <FormGroup
               // label='Email'
@@ -78,3 +80,5 @@ export default class extends React.Component {
     );
   }
 }
+
+export default withRouter(Login);  // ensure props from react-router are added to our component

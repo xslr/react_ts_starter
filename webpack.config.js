@@ -46,7 +46,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: true,  // always serve the root page, even if a subpath is requested. This is because the subpaths exist only on client side router.
     contentBase: './dist',
     hot: true
   }

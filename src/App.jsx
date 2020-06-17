@@ -1,16 +1,24 @@
-// import {useRoutes} from 'hookrouter';
 import React from 'react';
+
 import {
   BrowserRouter,
   Switch,
   Route,
-  Link
+  Link,
 } from 'react-router-dom';
-
 
 import Home from "./component/Home";
 import Dashboard from './component/Dashboard';
 import Login from './component/Login';
+
+const routes = {
+  '/': () => <Home />,
+  '/home': () => <Home />,
+  '/login': () => <Login />,
+  '/dashboard': () => <Dashboard />,
+  // '/products/:id': ({id}) => <ProductDetails id={id} />
+};
+
 
 export function App() {
   return (
