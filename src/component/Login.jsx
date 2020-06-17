@@ -1,11 +1,10 @@
 import * as React from 'react';
-import {navigate, useRoutes} from 'hookrouter';
+// import {navigate, useRoutes} from 'hookrouter';
 import {AnchorButton, Button, FormGroup, Icon, InputGroup, Intent, Spinner} from '@blueprintjs/core';
 const {default: axios} = require('axios');
 import Cookies from 'js-cookie';
 
 import style from './Login.scss';
-import Routes from '../routes'
 
 export default class extends React.Component {
   constructor(props) {
@@ -31,7 +30,7 @@ export default class extends React.Component {
           expires: 30,        // TODO: get expiry info from backend
           sameSite: 'strict', // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
         });
-        navigate('/dashboard', /*replace=*/true);
+        // navigate('/dashboard', /*replace=*/true);
     } else {
       console.error(`login errror: ${response}`)
     }
@@ -57,6 +56,7 @@ export default class extends React.Component {
     const { username, password } = this.state;
     return (
       <form>
+      <h3>Login</h3>
         <div className={style.loginContainer}>
           <FormGroup
               // label='Email'
